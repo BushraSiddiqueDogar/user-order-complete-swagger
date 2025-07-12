@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const { register, login, getCurrentUser } = require('../controllers/authController');
-const { auth } = require('../middleware/auth');
 
 /**
  * @swagger
  * tags:
  *   name: Auth
- *   description: Authentication routes
+ *   description: Authentication routes (No JWT required)
  */
 
 /**
@@ -84,14 +83,12 @@ router.post('/login', login);
  * @swagger
  * /api/auth/me:
  *   get:
- *     summary: Get current logged-in user
+ *     summary: Get current user info (without auth check)
  *     tags: [Auth]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Current user data
  */
-router.get('/me', auth, getCurrentUser);
+router.get('/me', getCurrentUser); 
 
 module.exports = router;
