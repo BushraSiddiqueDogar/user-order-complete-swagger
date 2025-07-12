@@ -3,7 +3,7 @@ const User = require('../models/User');
 const auth = async (req, res, next) => {
   try {
     // Find a dummy user
-    const user = await User.findOne({ email: 'dummyuser@example.com' });
+    const user = await User.findOne({ email: 'dummyuser@gmail.com' });
     if (!user) {
       return res.status(401).json({ success: false, message: 'No dummy user found' });
     }
